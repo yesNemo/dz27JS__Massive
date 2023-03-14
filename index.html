@@ -9,25 +9,30 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Усі данні виводяться у консоль! Так буде комфортніше оглядати масиви</h1>
-<div class="mainDiv">
-    <button onclick="showListHaveThis(shoppingList)">Завдання 1. Сортування массива  або ж відображення оновленного</button>
-</div>
-<div>
-    <p><span>Завдання 4 (середній рівень)</span> Введіть продукт який був не купленний але ви його вже придбали</p>
-    <input type="text" name="asd" id="buyingProductInpute">
-    <button onclick="buyingProduct()">Завдання 2.Придбати товар якщо він не придбанний </button>
-</div>
-<div>
-    <p><span>Завдання 3 (середній рівень)</span></p>
-    <input name="asds" id="deleteProductInpute">
-    <button onclick="deleteObject()">Завдання 3.Видалити цей товар, якщо він існує</button>
-</div>
-<div>
-    <p><span>Завдання 4 (середній рівень) </span> Введіть данні продукту через крапку, як в прикладі : (назва.кількість .чи придбани чи ні.ціна за штуку) eggs.40.true.20</p>
-    <input type="text" name="asdasdasd" id="addProductInpute">
-    <button onclick="addObject()">Завдання 4. Додати продукт</button>
-</div>
+<main>
+    <hr>
+    <hr>
+    <hr>
+    <div class="mainDiv">
+        <div id="shopping-list"></div>
+        <button onclick="showListHaveThis()">Завдання 1. Оновлення списку та сортування</button>
+    </div>
+    <div>
+        <p><span>Завдання 2. (середній рівень)</span> Введіть продукт який був не купленний але ви його вже придбали</p>
+        <input type="text" name="asd" id="buyingProductInpute">
+        <button onclick="buyingProduct()">Завдання 2.Придбати товар якщо він не придбанний </button>
+    </div>
+    <div>
+        <p><span>Завдання 3. (середній рівень)</span></p>
+        <input name="asds" id="deleteProductInpute">
+        <button onclick="deleteObject()">Завдання 3.Видалити цей товар, якщо він існує</button>
+    </div>
+    <div>
+        <p><span>Завдання 4 (середній рівень) </span> Введіть данні продукту через крапку, як в прикладі : (назва.кількість .чи придбани чи ні.ціна за штуку) eggs.40.true.20</p>
+        <input type="text" name="asdasdasd" id="addProductInpute">
+        <button onclick="addObject()">Завдання 4. Додати продукт</button>
+    </div>
+</main>
 <script src="index.js"></script>
 </body>
 </html>
