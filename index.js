@@ -4,26 +4,34 @@ let shoppingList = [
     {name:'milk', amount:2, HaveThis:true, priceFor1:30},
     {name:'eggs', amount:20, HaveThis:false, priceFor1:3},
 ];
-
-function showListHaveThis(shoppingList) {
-    let shoppingListSort;
-    let haveThisMassive=[];
-    let dontHaveThisMassive=[];
+const list = document.getElementById("shopping-list");
+const listSort = document.getElementById("sortList")
+function showListHaveThis() {
+    list.innerHTML = "";
+    let haveThisMassive = [];
+    let dontHaveThisMassive = [];
     for (let i = 0; i < shoppingList.length; i++) {
-        if (shoppingList[i].HaveThis){
-            haveThisMassive.push(shoppingList[i])
-        }else {
-            dontHaveThisMassive.push(shoppingList[i])
+        if (shoppingList[i].HaveThis) {
+            haveThisMassive.push(shoppingList[i]);
+        } else {
+            dontHaveThisMassive.push(shoppingList[i]);
         }
     }
-    shoppingListSort= haveThisMassive.concat(dontHaveThisMassive);
-    console.log("Завдання 1.Нормальний список",shoppingList)
-    // console.log("Завдання 1.Це вже купленний", haveThisMassive)
-    // console.log("Завдання 1.Це ще не купленний",dontHaveThisMassive)
-    console.log("Завдання 1.Відсортирований список", shoppingListSort)
-    // return shoppingListSort;
+    let shoppingListSort = haveThisMassive.concat(dontHaveThisMassive);
+    for (let i = 0; i < shoppingListSort.length; i++) {
+        const item = shoppingListSort[i];
+        const li = document.createElement("div");
+        li.innerHTML = `${item.name}  ${item.amount}шт  ${item.HaveThis ? "Куплено" : "Не куплено"} ${item.priceFor1}`;
+        li.addEventListener("click", () => {
+            item.HaveThis = !item.HaveThis;
+            li.innerHTML = `${item.name}  ${item.amount}шт ${item.HaveThis ? "Куплено" : "Не куплено"} ${item.priceFor1}`;
+        });
+        list.appendChild(li);
+    }
 }
-function buyingProduct(){
+showListHaveThis(shoppingList);
+
+    function buyingProduct(){
 
     let nameProduct = document.getElementById('buyingProductInpute').value;
     let item = shoppingList.find(item => item.name === nameProduct);
@@ -41,14 +49,15 @@ function buyingProduct(){
 }
 // buyingProduct();
 
-function deleteObject(){
+function deleteObject() {
     let productName = document.getElementById('deleteProductInpute').value;
-   let checkProduct = shoppingList.find(item => item.name === productName)
-    if (checkProduct){
-        let foundProduct = shoppingList.filter(item => item.name !== productName);
-        console.log("Завдання 3.Успішно видалено",foundProduct)
-    }else {
-        console.log("Завдання 3.Такого продукту немає")
+    let foundProduct = shoppingList.find(item => item.name === productName);
+    if (foundProduct) {
+        let index = shoppingList.indexOf(foundProduct);
+        shoppingList.splice(index, 1);
+        console.log("Завдання 3. Успішно видалено", shoppingList);
+    } else {
+        console.log("Завдання 3. Такого продукту немає");
     }
 }
 function addObject(){
@@ -75,4 +84,16 @@ let addingProduct = document.getElementById("addProductInpute").value;
         })
     }
 }
+let text = document.querySelector('.divShow');
+
+document.addEventListener('keydown', (event) =>{
+    if (event.ctrlKey && event.key === "e"){
+        event.preventDefault();
+        console.log("WORKING");
+        let textArea = document.createElement('textarea');
+        textArea.value = text.innerText;
+        document.body.append(textArea);
+    }
+});
+
 
